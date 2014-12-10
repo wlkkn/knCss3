@@ -1,0 +1,96 @@
+@import 'nib'
+
+.transform
+  ul
+    border-top 15px solid #000
+    padding 0 10px
+    li
+      a
+        color #fff
+        float left
+        margin 0 5px
+        font-size 14px
+        height 50px
+        line-height @height
+        text-align center
+        width 65px
+        padding 10px 5px
+        background #151515
+        border-radius 0 0 5px 5px
+        box-shadow 0 0 1px #ccc,inset 0 0 2px #fff;
+        text-shadow 0 1px 1px #686868
+        text-decoration none
+    // 移动，(x,y)，一个值时Y则为0，注意逗号
+    .translate
+      a
+        background #2ec7d2
+        &:hover
+          transform translate(-10px, -10px)
+    .translate-x
+      a
+        background #8fdd21
+        &:hover
+          transform translateX(-10px)
+    .translate-y
+      a
+        background #f45917
+        &:hover
+          transform translateY(-10px)
+    // 旋转，正值表示顺时针
+    .rotate
+      a
+        background #d50e19
+        &:hover
+          transform rotate(45deg)
+    // 缩放，(x,y)，若无y，则两值相同
+    .scale
+      a
+        background #cdddf2
+        &:hover
+          transform scale(0.8, 0.8)
+    .scale-x
+      a
+        background #0fdd21
+        &:hover
+          transform scaleX(0.8)
+    .scale-y
+      a
+        background #cd5917
+        &:hover
+          transform scaleY(0.8)
+    // 扭曲，(x,y),若无y，表示y为0deg
+    .skew
+      a
+        background #519
+        &:hover
+          transform skew(45deg, 15deg)
+    .skew-x
+      a
+        background #d50
+        &:hover
+          transform skewX(-30deg)
+    .skew-y
+      a
+        background #e19
+        &:hover
+          transform skewY(30deg)
+    // 矩阵，(a,b,c,d,e,f)六个参数
+    .matrix
+      a
+        background #919
+        &:hover
+          transform matrix(1,1,-1,0,0,0)
+    // 多个效果累加时注意不是','分隔，而是空格分隔
+    .more
+      a
+        background red
+        &:hover
+          transform rotate(45deg) scale(0.8,1.2) skew(60deg,-30deg)
+.transform2
+  ul
+    li
+      a
+        // 改变元素基点，可以是百分值，em，px，[left,center,right | top,center,bottm]等，
+        transform-origin left top
+    
+        
