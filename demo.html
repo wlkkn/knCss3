@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <title>knCSS3</title>
+<script type="text/javascript" src="./dest/jquery.js"></script>
 <link href="./dest/css3.css" rel="stylesheet" type="text/css" />
 <style>
 div{
@@ -143,5 +144,96 @@ div{
     <div class="other other2"></div>
     <div class="other other3"></div>
   </div>
+  <div>
+    <a href="" class="btn">发光的button</a>
+  </div>
+  <div class="animation02">
+    <a class="s-xguide-down trans" href="javascript:;" onclick="return false;" hidefocus=""></a>
+    <a class="s-xguide-down arrow-1 trans" href="javascript:;" onclick="return false;" hidefocus=""></a>
+  </div>
+  <div class="animation03">
+    <a href="javascript">十分钟入门</a>
+  </div>
+  <div class="animation04">
+    <div class="sky target">
+      <div id="cloud" class="target">
+        <div class="cloud cloud01"></div>
+        <div class="cloud cloud02"></div>
+        <div class="cloud cloud03"></div>
+      </div>
+      <div id="sun" class="target"></div>
+      <div id="moon" class="target">
+        <div class="moon moon01"></div>
+        <div class="moon moon02"></div>
+      </div>
+      <div class="target" id="ground"></div>
+    </div>
+    <input type="button" value="ANIMATE THE SCENE" id="startbutton">
+  </div>
 </body>
+<script>
+  $(function(){
+    var s = null,
+
+    AnimationSpace = {
+      settings: {
+        tabHeaders: null,
+        tabSections: null,
+        currentIndex: null,
+        speed: 800,
+        collection: null,
+        i: null,
+        j: null,
+        startButton: $("#startbutton")
+      },
+
+      init: function () {
+        s = this.settings;
+        s.tabSections = $("div.tab");
+        $(s.tabSections[0]).slideDown(s.speed);
+        $(s.tabSections[1]).slideUp(s.speed);
+        $(s.tabSections[2]).slideUp(s.speed);
+        $(s.tabSections[3]).slideUp(s.speed);
+        $(s.tabSections[4]).slideUp(s.speed);
+        this.getClickedTab();
+        this.startAnimation();
+      },
+    
+      getClickedTab: function () {
+        s = this.settings;
+        s.tabHeaders = $("#sidebar_tabs ul.headers a");
+        s.collection = $("#tab_content div.tab");
+        $(s.tabHeaders).click(function () {
+          s.currentIndex = $(this).parent().index();
+          for (s.i = 0, s.j = s.collection.length; s.i < s.j; s.i += 1) {
+            if (s.i !== s.currentIndex) {
+              $(s.tabSections[s.i]).slideUp(s.speed);
+
+            } else {
+              $(s.tabSections[s.i]).slideDown(s.speed);
+            }
+          }
+          return false;
+        });
+      },
+      
+      startAnimation: function () {
+        s = this.settings;
+        
+        s.startButton.click(function() {
+          $("div.target").toggleClass("animate");
+          if (s.startButton.attr("value") === "ANIMATE THE SCENE") {
+            s.startButton.attr("value", "RESET THE ANIMATION");
+          } else {
+            s.startButton.attr("value", "ANIMATE THE SCENE"); 
+          }
+        });
+      }
+
+    };
+
+    AnimationSpace.init();
+  });
+
+</script>
 </html>

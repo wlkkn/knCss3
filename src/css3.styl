@@ -5,6 +5,7 @@
 @import './shadow'
 @import './transform'
 @import './transition'
+@import './animation'
 
 // 带有只是箭头的对话框
 // 原理：通过:after,:before伪类制作两个三角来实现
@@ -54,6 +55,9 @@
     left $left
     border $afterBWidth solid
     border-color #fff transparent transparent #fff
+  &::selection
+    background red
+    color #fff
 
 // 箭头在左侧就显示右边框
 .frame2

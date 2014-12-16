@@ -1,0 +1,277 @@
+@import 'nib'
+
+// @keyframes 动画名字{
+//   0%或者from{
+//     动画的css
+//   }
+//   百分比{
+//     动画的css
+//   }
+//   100%或者to{
+//     动画的css
+//   }
+// }
+
+// animation-name:none(无动画)，由@keyframes定义的名字
+// animation-duration:持续时间，单位s
+// animation-timing-function:变化速率,ease,ease-in,ease-in-out,ease-out,linear,cubic-bezier
+// animation-delay:延迟时间，单位s
+// animation-iteration-count:循环次数，默认为1，infinite为无限
+// animation-direction:动画方向，normal为每次都向前，alternate为偶数次时向前，奇数时反方向
+// animation-play-state:动画播放状态，默认为running,另一个为paused
+// animation:名字，持续时间，变化速率，延迟时间，循环次数，方向*
+
+@keyframes buttomLight
+  from
+    background rgba(96,203,27,0.5)
+    box-shadow 0 0 5px rgba(255,255,255,0.3) inset, 0 0 3px rgba(220,120,200,0.8)
+    color red
+  25%
+    background rgba(196,203,27,0.8)
+    box-shadow 0 0 10px rgba(255,155,255,0.5) inset,0 0 8px rgba(120,120,200,0.8)
+    color blue
+  50%
+    background rgba(196,203,127,1)
+    box-shadow 0 0 5px rgba(155,255,255,0.3) inset, 0 0 3px rgba(220,120,100,1)
+    color orange
+  to
+    background rgba(96,203,27,0.5)
+    box-shadow 0 0 5px rgba(255,255,255,0.3) inset,0 0 3px rgba(220,120,200,0.5)
+    color green
+a.btn
+  background #60cb1b
+  font-size 16px
+  padding 10px 15px
+  color #fff
+  text-align center
+  text-decoration none
+  font-weight bold
+  text-shadow 0 -1px 1px rgba(0 0 0 0.3)
+  border-radius 5px
+  box-shadow 0 0 5px rgba(255,255,255,0.6) inset,0 0 3px rgba(220,120,200,0.8)
+  animation-name buttomLight
+  animation-duration 5s
+  animation-iteration-count infinite
+  
+.animation02
+  position relative
+  height 100px
+  background blue
+  .s-xguide-down
+    width 50px
+    height 50px
+    display inline-block
+    position absolute
+    top 10px
+    left 50%
+    background url(./guide.png) no-repeat -21px -3px
+    border-radius 50%
+    opacity 0.7
+    cursor pointer
+  @keyframes xguide_down
+    0%,100%
+      transform scale(0.0)
+      opacity 0
+    50%
+      transform scale(1.0)
+      opacity 1
+  .s-xguide-down.trans
+    animation xguide_down 4.0s infinite ease-in-out
+  .s-xguide-down.arrow-1
+    animation-delay -2.0s
+
+.animation03
+  height 100px
+  position relative
+  background red
+  a:after
+    content ' '
+    position absolute
+    width 10px
+    height 10px
+    border 1px solid #ccc
+    border-width 0 1px 1px 0
+    left 50%
+    top 50px
+    transform rotate(45deg) translate(-50%, 0)
+    animation arrowGo 2s infinite steps(10, end)
+  @keyframes arrowGo
+    0%
+      opacity 0.5
+      transform-origin center center
+      transform rotate(45deg) translate(-50%, 0)
+    100%
+      opacity 1
+      transform-origin center center
+      transform rotate(45deg) translate(-50%,0) scale(2)
+      top 70px
+
+.animation04
+  overflow hidden
+  padding 0
+  div
+    margin 0
+  .sky
+    margin 0 auto
+    width 500px
+    height 500px
+    position relative
+    z-index 1
+    overflow hidden
+    background #525252
+    &.animate
+      animation-name sky
+      animation-duration 10s
+      animation-timing-function ease
+      animation-iteration-count 1
+      animation-direction normal
+      animation-delay 0
+      animation-play-state running
+      animation-fill-mode forwards
+    @keyframes sky
+      0%
+        background-color: #525252
+      33%
+        background-color: #6293e5
+      66%
+        background-color: #6293e5
+      100%
+        background-color: #525252
+    #cloud
+      position relative
+      top 50px
+      left -200px
+      opacity 0
+      z-index 3
+      &.animate
+        animation-name cloud
+        animation-duration 12s
+        animation-timing-function ease
+        animation-iteration-count 1
+        animation-direction normal
+        animation-delay 0
+        animation-play-state running
+        animation-fill-mode forwards
+      @keyframes cloud
+        0%
+          opacity 0
+          left -100px
+        50%
+          opacity 1
+        75%
+          opacity 1
+          left 100px
+        100%
+          opacity 0
+          left 500px
+      .cloud
+        border-radius 90px / 30px
+        width 160px
+        height 50px
+        background #fff
+        position absolute
+        top 10px
+      .cloud02
+        top 0px
+        left 50px
+      .cloud03
+        top 20px
+        left 110px
+    #sun
+      background #ffd630
+      width 130px
+      height 130px
+      border-radius 70px
+      position absolute
+      bottom 0
+      left 340px
+      z-index 2
+      &.animate
+        animation-name sunrise
+        animation-duration 10s
+        animation-timing-function ease
+        animation-iteration-count 1
+        animation-direction normal
+        animation-delay 0
+        animation-play-state running
+        animation-fill-mode forwards
+    @keyframes sunrise
+      0%
+        bottom 0
+        left 340px
+        background #f00
+      33%
+        bottom 340px
+        left 340px
+        background #ffd630
+      66%
+        bottom 340px
+        left 40px
+        background #ffd630
+      100%
+        bottom 0
+        left 40px
+        background #f00
+    #moon
+      position relative
+      opacity 0
+      top 50px
+      left -100px
+      &.animate
+        animation-name moon
+        animation-duration 10s
+        animation-timing-function ease
+        animation-iteration-count 1
+        animation-direction normal
+        animation-delay 0
+        animation-play-state running
+        animation-fill-mode forwards
+      @keyframes moon
+        0%
+          opacity 0
+          left -100px
+        50%
+          opacity 0
+          left -100px
+        90%
+          opacity 0
+          left -100px
+        100%
+          opacity 1
+          left 50px
+      .moon
+        width 100px
+        height 100px
+        border-radius 50px
+        background #fff
+        position absolute
+      .moon02
+        background #525252
+        top -20px
+        left 20px
+    #ground
+      position absolute
+      bottom 0
+      left 0
+      width 500px
+      height 154px
+      background #6c5228
+      z-index 4
+      &.animate
+        animation-name ground
+        animation-duration 10s
+        animation-timing-function ease
+        animation-iteration-count 1
+        animation-direction normal
+        animation-delay 0
+        animation-play-state running
+        animation-fill-mode forwards
+    @keyframes ground
+      0%
+        background #6c5228
+      33%
+        background #48a037
+      66%
+        background #48a037
+      100%
+        background #6c5228
